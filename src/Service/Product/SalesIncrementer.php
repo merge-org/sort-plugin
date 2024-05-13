@@ -6,7 +6,7 @@ namespace MergeOrg\Sort\Service\Product;
 use DateTime;
 use MergeOrg\Sort\Core\Constants;
 
-final class SalesIncrementer {
+final class SalesIncrementer implements SalesIncrementerInterface {
 
 	/**
 	 * @param array<string, array<string, int>> $sales

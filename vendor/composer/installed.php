@@ -1,8 +1,8 @@
 <?php return array(
     'root' => array(
         'name' => 'merge-org/sort',
-        'pretty_version' => '0.4.6',
-        'version' => '0.4.6.0',
+        'pretty_version' => '0.4.7',
+        'version' => '0.4.7.0',
         'reference' => null,
         'type' => 'wordpress-plugin',
         'install_path' => __DIR__ . '/../../',
@@ -11,8 +11,8 @@
     ),
     'versions' => array(
         'merge-org/sort' => array(
-            'pretty_version' => '0.4.6',
-            'version' => '0.4.6.0',
+            'pretty_version' => '0.4.7',
+            'version' => '0.4.7.0',
             'reference' => null,
             'type' => 'wordpress-plugin',
             'install_path' => __DIR__ . '/../../',

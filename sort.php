@@ -9,7 +9,7 @@ namespace MergeOrg\Sort;
  * Description: 📊Sort - Sales Order Ranking Tool | Powered by Merge
  * Author: Merge
  * Author URI: https://github.com/merge-org
- * Version: 0.4.6
+ * Version: 0.4.7
  * Text Domain: merge-org-sort
  * Domain Path: /languages
  * Requires PHP: 7.4

@@ -6,7 +6,7 @@ namespace MergeOrg\Sort\Service\Product;
 use MergeOrg\Sort\Core\Constants;
 use MergeOrg\Sort\Data\Product\SalesPeriod;
 
-final class SalesPeriodManager {
+final class SalesPeriodManager implements SalesPeriodManagerInterface {
 
 	/**
 	 * @param array<string, array<string, int>> $sales

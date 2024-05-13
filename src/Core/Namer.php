@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 namespace MergeOrg\Sort\Core;
 
-final class Namer {
+final class Namer implements NamerInterface {
 
 	/**
 	 * @return string
@@ -21,7 +21,6 @@ final class Namer {
 
 	/**
 	 * @param int $days
-	 *
 	 * @return string
 	 */
 	public function getProductSalesPeriodPurchaseMetaKey( int $days ): string {
@@ -30,7 +29,6 @@ final class Namer {
 
 	/**
 	 * @param int $days
-	 *
 	 * @return string
 	 */
 	public function getProductSalesPeriodQuantityMetaKey( int $days ): string {

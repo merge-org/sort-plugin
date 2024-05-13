@@ -6,34 +6,38 @@ namespace MergeOrg\Sort\WordPress;
 use WP_Post;
 use WC_Order;
 use WC_Product;
-use MergeOrg\Sort\Core\Namer;
+use MergeOrg\Sort\Core\NamerInterface;
 use MergeOrg\Sort\Data\Product\SalesPeriod;
-use MergeOrg\Sort\Service\Product\SalesIncrementer;
-use MergeOrg\Sort\Service\Product\SalesPeriodManager;
+use MergeOrg\Sort\Service\Product\SalesIncrementerInterface;
+use MergeOrg\Sort\Service\Product\SalesPeriodManagerInterface;
 
-final class Api {
-
-	/**
-	 * @var Namer
-	 */
-	private Namer $namer;
+final class Api implements ApiInterface {
 
 	/**
-	 * @var SalesIncrementer
+	 * @var NamerInterface
 	 */
-	private SalesIncrementer $salesIncrementer;
+	private NamerInterface $namer;
 
 	/**
-	 * @var SalesPeriodManager
+	 * @var SalesIncrementerInterface
 	 */
-	private SalesPeriodManager $salesPeriodManager;
+	private SalesIncrementerInterface $salesIncrementer;
 
 	/**
-	 * @param Namer              $namer
-	 * @param SalesIncrementer   $salesIncrementer
-	 * @param SalesPeriodManager $salesPeriodManager
+	 * @var SalesPeriodManagerInterface
 	 */
-	public function __construct( Namer $namer, SalesIncrementer $salesIncrementer, SalesPeriodManager $salesPeriodManager ) {
+	private SalesPeriodManagerInterface $salesPeriodManager;
+
+	/**
+	 * @param NamerInterface              $namer
+	 * @param SalesIncrementerInterface   $salesIncrementer
+	 * @param SalesPeriodManagerInterface $salesPeriodManager
+	 */
+	public function __construct(
+		NamerInterface $namer,
+		SalesIncrementerInterface $salesIncrementer,
+		SalesPeriodManagerInterface $salesPeriodManager
+	) {
 		$this->namer              = $namer;
 		$this->salesIncrementer   = $salesIncrementer;
 		$this->salesPeriodManager = $salesPeriodManager;
@@ -107,7 +111,6 @@ final class Api {
 
 	/**
 	 * @param int $orderId
-	 *
 	 * @return bool|null
 	 */
 	private function isOrderRecorded( int $orderId ): ?bool {
@@ -120,7 +123,6 @@ final class Api {
 
 	/**
 	 * @param int $id
-	 *
 	 * @return WC_Order|null
 	 */
 	private function getOrder( int $id ): ?WC_Order {
@@ -129,7 +131,6 @@ final class Api {
 
 	/**
 	 * @param int $orderId
-	 *
 	 * @return void
 	 */
 	private function setOrderRecorded( int $orderId ): void {
@@ -142,7 +143,6 @@ final class Api {
 	/**
 	 * @param int                               $productId
 	 * @param array<string, array<string, int>> $sales
-	 *
 	 * @return void
 	 */
 	private function setProductSales( int $productId, array $sales ): void {
@@ -154,7 +154,6 @@ final class Api {
 
 	/**
 	 * @param int $productId
-	 *
 	 * @return WC_Product|null
 	 */
 	private function getProduct( int $productId ): ?WC_Product {
@@ -163,7 +162,6 @@ final class Api {
 
 	/**
 	 * @param int $productId
-	 *
 	 * @return array<string, array<string, int>>
 	 */
 	private function getProductSales( int $productId ): array {
@@ -176,7 +174,6 @@ final class Api {
 
 	/**
 	 * @param int $maxProducts
-	 *
 	 * @return void
 	 */
 	public function findAndUpdateNonUpdatedProductsSalesPeriod( int $maxProducts = 5 ): void {
@@ -214,7 +211,6 @@ final class Api {
 	/**
 	 * @param int           $productId
 	 * @param SalesPeriod[] $salesPeriods
-	 *
 	 * @return void
 	 */
 	private function setProductSalesPeriods( int $productId, array $salesPeriods ): void {

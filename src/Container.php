@@ -5,8 +5,12 @@ namespace MergeOrg\Sort;
 
 use MergeOrg\Sort\Core\Namer;
 use MergeOrg\Sort\WordPress\Api;
+use MergeOrg\Sort\Core\NamerInterface;
+use MergeOrg\Sort\WordPress\ApiInterface;
 use MergeOrg\Sort\Service\Product\SalesIncrementer;
 use MergeOrg\Sort\Service\Product\SalesPeriodManager;
+use MergeOrg\Sort\Service\Product\SalesIncrementerInterface;
+use MergeOrg\Sort\Service\Product\SalesPeriodManagerInterface;
 
 final class Container {
 
@@ -22,10 +26,10 @@ final class Container {
 	public function get( string $key ) {
 		if ( ! $this->container ) {
 			$this->container = array(
-				Namer::class              => $namer                           = new Namer(),
-				SalesIncrementer::class   => $salesIncrementer     = new SalesIncrementer(),
-				SalesPeriodManager::class => $salesPeriodManager = new SalesPeriodManager(),
-				Api::class                => new Api( $namer, $salesIncrementer, $salesPeriodManager ),
+				NamerInterface::class              => $namer                           = new Namer(),
+				SalesIncrementerInterface::class   => $salesIncrementer     = new SalesIncrementer(),
+				SalesPeriodManagerInterface::class => $salesPeriodManager = new SalesPeriodManager(),
+				ApiInterface::class                => new Api( $namer, $salesIncrementer, $salesPeriodManager ),
 			);
 		}
 
