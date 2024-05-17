@@ -1,6 +1,6 @@
 {
     "name": "merge-org/sort",
-    "version": "0.4.7",
+    "version": "0.4.8",
     "type": "wordpress-plugin",
     "autoload": {
         "MergeOrg\\Sort\\": "src",
